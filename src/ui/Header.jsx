@@ -3,9 +3,10 @@ import SearchOrder from "../features/order/SearchOrder";
 
 const Header = () => {
   return (
-    <header>
+    <header className="bg-yellow-500">
       <Link to="/">Swift Pizza Co.</Link>
       <SearchOrder />
+      <p>Ray Cuisine</p>
     </header>
   );
 };
