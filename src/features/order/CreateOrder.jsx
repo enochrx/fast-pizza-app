@@ -48,13 +48,13 @@ function CreateOrder() {
       <Form method="POST">
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input className="bg-white" type="text" name="customer" required />
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input className="bg-white" type="tel" name="phone" required />
           </div>
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
@@ -62,7 +62,7 @@ function CreateOrder() {
         <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input className="bg-white" type="text" name="address" required />
           </div>
         </div>
 
@@ -79,7 +79,10 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button disabled={isSubmitting}>
+          <button
+            className="transition-color inline-block rounded-full bg-rose-500 px-4 py-3 font-semibold tracking-wide text-stone-800 uppercase duration-300 hover:bg-rose-400 focus:ring focus:ring-rose-400 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? "Placing order..." : "Order now"}
           </button>
         </div>
@@ -104,13 +107,13 @@ export async function action({ request }) {
   if (!isValidPhone(order.phone))
     errors.phone = "Please give us a valid phone number to contact you";
 
-  console.log(errors);
   if (Object.keys(errors).length > 0) return errors;
 
   //If everything is okay, create new order and redirecting
-  const newOrder = await createOrder(order);
-  console.log(newOrder);
-  return redirect(`/order/${newOrder.id}`);
+  // const newOrder = await createOrder(order);
+
+  // return redirect(`/order/${newOrder.id}`);
+  return null;
 }
 
 export default CreateOrder;
