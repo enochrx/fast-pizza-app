@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between border-b border-stone-200 bg-rose-500 px-4 uppercase sm:px-6 sm:text-sm">
       <Link
-        className="font-extrabold tracking-[0.25rem] sm:tracking-[0.5rem]"
+        className="text-2xl font-bold tracking-[0.25rem] sm:tracking-[0.5rem]"
         to="/"
       >
         <div className="inline-flex items-center justify-between gap-2 py-4">

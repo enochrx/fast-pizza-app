@@ -14,7 +14,7 @@ const SearchOrder = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        className="focus:ring-opacity-50 w-36 rounded-full bg-rose-100 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:w-72 focus:ring focus:ring-rose-800 focus:outline-none sm:w-64"
+        className="focus:ring-opacity-50 w-36 rounded-full bg-rose-100 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:ring focus:ring-rose-800 focus:outline-none sm:w-64 sm:focus:w-72"
         placeholder="Search order #"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
