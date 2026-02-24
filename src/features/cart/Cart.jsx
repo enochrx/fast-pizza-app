@@ -40,7 +40,7 @@ function Cart() {
           <CartItem key={item.pizzaId} item={item} />
         ))}
       </ul>
-      <div>
+      <div className="mt-6 space-x-2">
         <Button to="/order/new" type="primary">
           Order pizzas
         </Button>
