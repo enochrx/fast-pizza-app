@@ -18,7 +18,7 @@ const Header = () => {
           Swift Pizza Co.
         </div>
       </Link>
-      <div>
+      <div className="">
         <SearchOrder />
         <Username />
       </div>
