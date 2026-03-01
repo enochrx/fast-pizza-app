@@ -1,16 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  //   cart: [],
-  cart: [
-    {
-      pizzaId: 6,
-      name: "Vegetale",
-      quantity: 1,
-      unitPrice: 13,
-      totalPrice: 13,
-    },
-  ],
+  cart: [],
 };
 
 const cartSlice = createSlice({
@@ -21,7 +12,7 @@ const cartSlice = createSlice({
     addItem(state, action) {
       state.cart.push(action.payload);
     },
-    deleteCart(state, action) {
+    deleteItem(state, action) {
       state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
     },
     increaseItemQuantity(state, action) {
@@ -42,10 +33,20 @@ const cartSlice = createSlice({
 
 export const {
   addItem,
-  deleteCart,
+  deleteItem,
   increaseItemQuantity,
   decreaseitemQuantity,
   clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+export const getCart = (state) => state.cart.cart;
+
+export const getTotalCartQuantity = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
+
+export const getTotalCartPrice = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+//reselect is used instead of this useSlector to prevent performance issues in large app
