@@ -20,10 +20,12 @@ const cartSlice = createSlice({
       item.quantity++;
       item.totalPrice = item.unitPrice * item.quantity;
     },
-    decreaseitemQuantity(state, action) {
+    decreaseItemQuantity(state, action) {
       const item = state.cart.find((item) => item.pizzaId == action.payload);
       item.quantity--;
       item.totalPrice = item.unitPrice * item.quantity;
+
+      if (item.quantity === 0) cartSlice.caseReducers.deleteItem(state, action);
     },
     clearCart(state) {
       state.cart = [];
@@ -35,7 +37,7 @@ export const {
   addItem,
   deleteItem,
   increaseItemQuantity,
-  decreaseitemQuantity,
+  decreaseItemQuantity,
   clearCart,
 } = cartSlice.actions;
 
@@ -48,5 +50,8 @@ export const getTotalCartQuantity = (state) =>
 
 export const getTotalCartPrice = (state) =>
   state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+export const getCurQuantityById = (id) => (state) =>
+  state.cart.cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
 
 //reselect is used instead of this useSlector to prevent performance issues in large app
